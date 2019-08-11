@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CommunityManagerDashBoard.Data;
 using CommunityManagerDashBoard.Models;
+using CommunityManagerDashBoard.ViewModels;
+using CommunityManagerDashBoard.Data.Repositories;
 
 namespace CommunityManagerDashBoard.Controllers
 {
     public class ResidentController : Controller
     {
-       /*
+       
         private Factory repositoryFactory;
 
         public ResidentController(Factory repositoryFactory)
@@ -24,7 +26,7 @@ namespace CommunityManagerDashBoard.Controllers
         
         public IActionResult Index()
         {
-            List<ResidentListViewModel> residents = ResidentListViewModel.GetResidentList(repositoryFactory);
+            List<ResidentListViewModel> residents = ResidentListViewModel.GetResident(repositoryFactory);
             return View(residents);
         }
 
@@ -55,7 +57,7 @@ namespace CommunityManagerDashBoard.Controllers
         public IActionResult Edit(int id, Resident resident)
         {   
         
-            resident.Persist(id, repositoryFactory);
+            //resident.Persist(id, repositoryFactory);
             return RedirectToAction(actionName: nameof(Index));
         }
 
@@ -64,7 +66,7 @@ namespace CommunityManagerDashBoard.Controllers
         {
            repositoryFactory.GetResidentRepository().Delete(id);
             return RedirectToAction(actionName: nameof(Index));
-        }*/
+        }
 
        
     }

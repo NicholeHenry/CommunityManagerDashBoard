@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using CommunityManagerDashBoard.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CommunityManagerDashBoard.Data.Repositories;
 
 namespace CommunityManagerDashBoard
 {
@@ -38,6 +39,7 @@ namespace CommunityManagerDashBoard
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<Factory>();
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();

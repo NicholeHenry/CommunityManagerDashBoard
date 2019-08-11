@@ -15,7 +15,13 @@ namespace CommunityManagerDashBoard.ViewModels
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
 
-        public ResidentCreateViewModel ()
+
+        public ResidentCreateViewModel()
+        {
+
+        }
+   
+        public ResidentCreateViewModel (Factory repositoryFactory)
         {
 
 
