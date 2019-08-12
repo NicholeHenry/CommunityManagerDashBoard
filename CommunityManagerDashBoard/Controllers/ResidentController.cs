@@ -24,10 +24,22 @@ namespace CommunityManagerDashBoard.Controllers
 
 
         
-        public IActionResult Index()
+        public IActionResult Index(string searchString)
         {
+            ViewData["CurrentFilter"] = searchString;
             List<ResidentListViewModel> residents = ResidentListViewModel.GetResident(repositoryFactory);
-            return View(residents);
+
+            var resident = from r in residents
+                           select r;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                resident = resident.Where(r => r.LastName.Contains(searchString)
+                || r.FirstName.Contains(searchString));
+                
+                  
+                
+            }
+            return View(resident);
         }
 
 
