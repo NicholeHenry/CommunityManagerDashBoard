@@ -13,5 +13,6 @@ namespace CommunityManagerDashBoard.Data
         int Save(T model);
         void Delete(int id);
         void Update(T model);
+       
     }
 }

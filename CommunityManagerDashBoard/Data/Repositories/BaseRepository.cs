@@ -44,6 +44,7 @@ namespace CommunityManagerDashBoard.Data.Repositories
             return model.Id;
         }
 
+     
         public void Update(TEntity model)
         {
             context.Update(model);

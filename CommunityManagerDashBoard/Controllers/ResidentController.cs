@@ -22,25 +22,15 @@ namespace CommunityManagerDashBoard.Controllers
 
         }
 
+        public IActionResult Index()
+        {
+            List<ResidentListViewModel> residents = ResidentListViewModel.GetResident(repositoryFactory);
+            return View(residents);
+        }
 
         
-        public IActionResult Index(string searchString)
-        {
-            ViewData["CurrentFilter"] = searchString;
-            List<ResidentListViewModel> residents = ResidentListViewModel.GetResident(repositoryFactory);
-
-            var resident = from r in residents
-                           select r;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                resident = resident.Where(r => r.LastName.Contains(searchString)
-                || r.FirstName.Contains(searchString));
-                
-                  
-                
-            }
-            return View(resident);
-        }
+        
+        
 
 
         [HttpGet]
@@ -62,14 +52,14 @@ namespace CommunityManagerDashBoard.Controllers
         public IActionResult Edit(int id)
         {
             
-            return View(new ResidentEditViewModel(id));
+            return View( new ResidentEditViewModel(id));
         }
 
         [HttpPost]
-        public IActionResult Edit(int id, Resident resident)
+        public IActionResult Edit(int id, ResidentEditViewModel resident)
         {   
-        
-            //resident.Persist(id, repositoryFactory);
+            
+            resident.Persist(id, repositoryFactory);
             return RedirectToAction(actionName: nameof(Index));
         }
 
