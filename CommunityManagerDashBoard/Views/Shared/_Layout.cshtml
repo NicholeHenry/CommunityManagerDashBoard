@@ -6,48 +6,40 @@
     <title>@ViewData["Title"] - CommunityManagerDashBoard</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrapSolar.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrapSolar.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
     </environment>
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/NewLayout.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Community Board</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+        <nav>
+            <div class="topnav">
+                <a  asp-area="" asp-controller="Home" asp-action="Index">Community Board</a>
+                
+                
+                
+                    
+                    
+                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        
+                       
+                <a class="nav-link text-dark" asp-area="" asp-controller="Resident" asp-action="Index">Residents</a>
 
-                        <li>
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Resident" asp-action="Create">Add Resident</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Resident" asp-action="Index">Residents</a>
-                        </li>
-                    </ul>
-                </div>
+
+                <partial name="_LoginPartial" />    
+                    
+               
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div>
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
