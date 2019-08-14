@@ -10,7 +10,7 @@ namespace CommunityManagerDashBoard.ViewModels
 {
     public class ResidentEditViewModel
     {
-        //private readonly Factory repositoryFactory;
+        private readonly Factory repositoryFactory;
         
         
         public string FirstName { get; set; }
@@ -46,14 +46,14 @@ namespace CommunityManagerDashBoard.ViewModels
         {
             Models.Resident resident = new Models.Resident
             {
-                Id = id,
+                
                 FirstName = this.FirstName,
                 LastName = this.LastName,
                 LotNumber = this.LotNumber,
                 PhoneNumber = this.PhoneNumber,
                 Email = this.Email
             };
-            repositoryFactory.GetResidentRepository().Save(resident);
+            repositoryFactory.GetResidentRepository().Update(resident);
         }
     }
 }
