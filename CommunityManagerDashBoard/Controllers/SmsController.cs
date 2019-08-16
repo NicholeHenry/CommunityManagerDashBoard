@@ -16,8 +16,8 @@ namespace CommunityManagerDashBoard.Controllers
         public ActionResult SendSms()
 
         {
-            var accountSid = "AC036b227040b660aca69fa3b328a4b403";
-            var authToken = "825c478b0b61ecc651a0a9060c8e53da";
+            var accountSid = "";
+            var authToken = "";
             TwilioClient.Init(accountSid, authToken);
 
             var to = new PhoneNumber("+16187723175");
