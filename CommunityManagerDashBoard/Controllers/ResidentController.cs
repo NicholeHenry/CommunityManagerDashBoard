@@ -28,11 +28,6 @@ namespace CommunityManagerDashBoard.Controllers
             return View(residents);
         }
 
-        
-        
-        
-
-
         [HttpGet]
         public IActionResult Create()
         {

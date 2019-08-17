@@ -3,32 +3,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Twilio.TwiML; 
-using Twilio.AspNet.Mvc;
-using Twilio.Types;
 using Twilio;
+using Twilio.AspNet.Core;
 using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace CommunityManagerDashBoard.Controllers
-{
-    public class SmsController : TwilioController
     {
-        public ActionResult SendSms()
-
+        public class SmsController : TwilioController
         {
-            var accountSid = "";
-            var authToken = "";
-            TwilioClient.Init(accountSid, authToken);
+            public ActionResult SendSms()
 
-            var to = new PhoneNumber("+16187723175");
-            var from = new PhoneNumber("+16364341260");
+            {
+                var accountSid = "";
+                var authToken = "";
+                TwilioClient.Init(accountSid, authToken);
 
-            var message = MessageResource.Create(
-                to: to,
-                from: from,
-                body: "Boil Order is in place for 24 hours"
-                );
-            return ActionContext(message.Sid);
+                var to = new PhoneNumber("+16187723175");
+                var from = new PhoneNumber("+16364341260");
+
+                var message = MessageResource.Create(
+                    to: to,
+                    from: from,
+                    body: "Boil Order is in place for 24 hours"
+                    );
+                return Content(message.Sid);
+            }
         }
     }
+}
+
 }

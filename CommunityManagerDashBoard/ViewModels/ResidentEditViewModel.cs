@@ -10,7 +10,7 @@ namespace CommunityManagerDashBoard.ViewModels
 {
     public class ResidentEditViewModel
     {
-        private readonly Factory repositoryFactory;
+       // private readonly Factory repositoryFactory;
         
         
         public string FirstName { get; set; }
