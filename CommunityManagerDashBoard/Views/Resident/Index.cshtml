@@ -7,7 +7,12 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New</a> 
+    
+    
+</p>
+<p>
+    <a asp-controller="Sms">Send text alert</a>
 </p>
 
 <form asp-action="Index" >
@@ -54,7 +59,7 @@
                 
                 @Html.ActionLink("Delete", "Delete", new { id=item.Id})
             </td>
-
+           
             
             </tr>
         }

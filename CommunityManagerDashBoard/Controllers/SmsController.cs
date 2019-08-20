@@ -12,15 +12,15 @@ namespace CommunityManagerDashBoard.Controllers
     {
         public class SmsController : TwilioController
         {
-            public ActionResult SendSms()
+            public IActionResult SendSms()
 
             {
                 var accountSid = "";
                 var authToken = "";
                 TwilioClient.Init(accountSid, authToken);
 
-                var to = new PhoneNumber("+16187723175");
-                var from = new PhoneNumber("+16364341260");
+                var to = new PhoneNumber("+");
+                var from = new PhoneNumber("+");
 
                 var message = MessageResource.Create(
                     to: to,
@@ -31,6 +31,5 @@ namespace CommunityManagerDashBoard.Controllers
             }
         }
     }
-}
 
-}
+
