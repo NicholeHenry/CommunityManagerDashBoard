@@ -14,6 +14,7 @@ using CommunityManagerDashBoard.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CommunityManagerDashBoard.Data.Repositories;
+using CommunityManagerDashBoard.Models.Configuration;
 
 namespace CommunityManagerDashBoard
 {
@@ -43,7 +44,7 @@ namespace CommunityManagerDashBoard
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
+            services.Configure<TwillioAccountDetails>(Configuration.GetSection("TwilioAccountDetails"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
