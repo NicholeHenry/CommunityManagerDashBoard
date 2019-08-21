@@ -15,17 +15,17 @@ namespace CommunityManagerDashBoard.Controllers
             public IActionResult SendSms()
 
             {
-                var accountSid = "";
-                var authToken = "";
+                var accountSid = "AccountSid";
+                var authToken = "AuthToken";
                 TwilioClient.Init(accountSid, authToken);
 
-                var to = new PhoneNumber("+");
-                var from = new PhoneNumber("+");
-
+            var to = new PhoneNumber("ToNumber");
+                var from = new PhoneNumber("FromNumber");
+                
                 var message = MessageResource.Create(
                     to: to,
                     from: from,
-                    body: "Boil Order is in place for 24 hours"
+                    body: "Boil Order in place for 24 hours."
                     );
                 return Content(message.Sid);
             }
