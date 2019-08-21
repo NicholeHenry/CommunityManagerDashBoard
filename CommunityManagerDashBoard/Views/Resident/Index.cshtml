@@ -4,24 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>List of Residents</h1>
+
 
 <p>
-    <a asp-action="Create">Create New</a> 
+    <button asp-controller="Sms"asp-action="SendSms"class="btn btn-warning" type="button">Send Text Alert : Boil Order</button>
     
-    
-</p>
-<p>
-    <a asp-controller="Sms" asp-action="SendSms">Send text alert</a>
 </p>
 
 <form asp-action="Index" >
 <div class="form-actions">
-    <p>
-        Find by name: <input type="text" name=" searchString" value=" @ViewData["currentFilter"]"/>
-                                <input type="submit" value="Search" class="btn-default"/>
-                              
-    </p>
+    
 </div>
 </form>
 <table class="table">

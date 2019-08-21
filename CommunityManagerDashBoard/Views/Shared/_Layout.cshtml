@@ -6,38 +6,44 @@
     <title>@ViewData["Title"] - CommunityManagerDashBoard</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrapSolar.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrapLux.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrapSolar.css"
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrapLux.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
     </environment>
-    <link rel="stylesheet" href="~/css/NewLayout.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrapLux.css" />
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="topnav">
-                <a  asp-area="" asp-controller="Home" asp-action="Index">Community Board</a>
-                
-                
-                
-                    
-                    
-                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        
-                       
-                <a class="nav-link text-dark" asp-area="" asp-controller="Resident" asp-action="Index">Residents</a>
+    <header><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Community Board</a>
+    <button class="navbar-toggler" aria-expanded="false" aria-controls="navbarColor03" aria-label="Toggle navigation" type="button" data-target="#navbarColor03" data-toggle="collapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-
-                <partial name="_LoginPartial" />    
-                    
-               
-            </div>
-        </nav>
+    <div class="collapse navbar-collapse" id="navbarColor03">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="https://localhost:44321/Home">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link" href="https://localhost:44321/Resident/Index">Resident List</a>
+            </li>
+            <li class="nav-item">
+                <a  class="nav-link" href="https://localhost:44321/Resident/Create">Add Resident</a>
+            </li>
+            
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+        
     </header>
     <div>
         <partial name="_CookieConsentPartial" />
@@ -46,11 +52,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - CommunityManagerDashBoard - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+    
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
