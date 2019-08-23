@@ -17,9 +17,10 @@ namespace CommunityManagerDashBoard.Controllers
             {
                 var accountSid = "AccountSid";
                 var authToken = "AuthToken";
+
                 TwilioClient.Init(accountSid, authToken);
 
-            var to = new PhoneNumber("ToNumber");
+                var to = new PhoneNumber("ToNumber");
                 var from = new PhoneNumber("FromNumber");
                 
                 var message = MessageResource.Create(
@@ -27,6 +28,7 @@ namespace CommunityManagerDashBoard.Controllers
                     from: from,
                     body: "Boil Order in place for 24 hours."
                     );
+
                 return Content(message.Sid);
             }
         }
