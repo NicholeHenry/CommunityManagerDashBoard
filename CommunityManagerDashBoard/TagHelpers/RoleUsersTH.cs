@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CommunityManagerDashBoard.Models.Roles;
 
 
 namespace CommunityManagerDashBoard.TagHelpers
 {
     [HtmlTargetElement("td", Attributes = "i-role")]
-    public class RoleUsersTH
+    public class RoleUsersTH : TagHelper
     {
         private UserManager<AppUser> userManager;
         private RoleManager<IdentityRole> roleManager;
@@ -23,6 +24,7 @@ namespace CommunityManagerDashBoard.TagHelpers
 
         [HtmlAttributeName("i-role")]
         public string Role { get; set; }
+
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
             List<string> names = new List<string>();
