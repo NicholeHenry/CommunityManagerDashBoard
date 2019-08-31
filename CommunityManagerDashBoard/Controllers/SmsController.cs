@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Twilio;
 using Twilio.AspNet.Core;
@@ -10,6 +11,7 @@ using Twilio.Types;
 
 namespace CommunityManagerDashBoard.Controllers
     {
+        [Authorize(Roles="Administration, Manager")]
         public class SmsController : TwilioController
         {
             public IActionResult SendSms()

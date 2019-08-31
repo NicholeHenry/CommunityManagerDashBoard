@@ -7,9 +7,11 @@ using CommunityManagerDashBoard.Data;
 using CommunityManagerDashBoard.Models;
 using CommunityManagerDashBoard.ViewModels;
 using CommunityManagerDashBoard.Data.Repositories;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CommunityManagerDashBoard.Controllers
 {
+    [Authorize(Roles = "Administration ,Manager")]
     public class ResidentController : Controller
     {
        
