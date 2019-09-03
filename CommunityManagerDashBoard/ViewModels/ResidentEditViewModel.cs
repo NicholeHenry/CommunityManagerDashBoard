@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel;
 
 namespace CommunityManagerDashBoard.ViewModels
 {
@@ -12,9 +13,11 @@ namespace CommunityManagerDashBoard.ViewModels
     {
        // private readonly Factory repositoryFactory;
         
-        
+        [DisplayName("First Name")]
         public string FirstName { get; set; }
+        [DisplayName("Last Name")]
         public string LastName { get; set; }
+        [DisplayName("Lot Number")]
         public int LotNumber { get; set; }
         public int PhoneNumber { get; set; }
         public string Email { get; set; }
