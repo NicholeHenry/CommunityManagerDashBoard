@@ -15,7 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CommunityManagerDashBoard.Data.Repositories;
 using CommunityManagerDashBoard.Models.Configuration;
-
+using CommunityManagerDashBoard.Models;
 
 namespace CommunityManagerDashBoard
 {
@@ -42,13 +42,15 @@ namespace CommunityManagerDashBoard
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<Factory>();
-            services.AddIdentity<IdentityUser,IdentityRole>()
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.Configure<TwillioAccountDetails>(Configuration.GetSection("TwilioAccountDetails"));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            
-        
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,73 +81,16 @@ namespace CommunityManagerDashBoard
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            CreateRoles(serviceProvider).Wait();
-
+           
         }
 
-        public async Task CreateRoles(IServiceProvider serviceProvider)
-        {
-            var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
-
-            string[] roles = { "Administration", "Manager" };
-
-            IdentityResult roleResult;
-
-            foreach (var role in roles)
-            {
-                var roleCall = await RoleManager.RoleExistsAsync(role);
-
-                if (!roleCall)
-                {
-
-                    roleResult = await RoleManager.CreateAsync(new IdentityRole(role));
-                }
-
-                var adminUser = new IdentityUser
-                {
-                    Email = "AdministrationEmail"
-
-                };
-
-                var user = await UserManager.FindByEmailAsync("AdministrationEmail");
-
-                if (user == null)
-                {
-
-                    var createAdminUser = await UserManager.CreateAsync(adminUser);
-                    if (createAdminUser.Succeeded)
-                    {
-                        await UserManager.AddToRoleAsync(adminUser, "Administration");
-                    }
-                }
-
-                var managerUser = new IdentityUser
-                {
-
-                    Email = "ManagerEmail"
-
-                };
-
-                var anotherUser = await UserManager.FindByEmailAsync("ManagerEmail");
-
-                if (anotherUser == null)
-                {
-
-                    var createMangerUser = await UserManager.CreateAsync(managerUser);
-
-                    if (createMangerUser.Succeeded)
-                    {
-                        await UserManager.AddToRoleAsync(managerUser, "Manager");
-                    }
-                }
-            }
-        }
-
-
-
-
-
+       
     }
+
+
 }
+
+
+    
+
 
